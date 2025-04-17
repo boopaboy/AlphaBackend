@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen(c =>
 
     c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
     {
-        Description = "API key needed to access the endpoints. X-API-KEY: ZGRmMThkZmMtODg2Zi00NmM4LTljZDEtYzUyN2VjYTE1YWJi",
+        Description = "API key needed to access the endpoints. X-API-KEY: LdHfeWN7B9Krvx5tgYzJp8CjM3A6TsX2qP4u",
         In = ParameterLocation.Header,
         Name = "X-API-KEY",
         Type = SecuritySchemeType.ApiKey

@@ -13,7 +13,6 @@ namespace WebApi.Controllers;
 /// </summary>
 /// 
 //min goda vän Claude (ai) stod för all api dokumentation
-[UseAdminApiKey]
 
 [Produces("application/json")]
 [Consumes("application/json")]
@@ -45,6 +44,8 @@ public class ClientsController : ControllerBase
     [ProducesResponseType(typeof(Client), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [UseAdminApiKey]
+
     public async Task<ActionResult<Client>> Create(AddClientForm formData)
     {
         if (!ModelState.IsValid)
@@ -99,6 +100,8 @@ public class ClientsController : ControllerBase
     [ProducesResponseType(typeof(Client), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [UseAdminApiKey]
+
     public async Task<ActionResult<Client>> Update(UpdateClientForm formData)
     {
         var result = await _clientService.UpdateClientAsync(formData);
@@ -117,6 +120,8 @@ public class ClientsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [UseAdminApiKey]
+
     public async Task<IActionResult> Delete(int id)
     {
         var result = await _clientService.DeleteClientAsync(id);

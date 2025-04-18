@@ -46,27 +46,10 @@ public static class ProjectMapper
         return entity;
 
 
-
     }
 
 
-    public static ProjectEntity ToEntity(UpdateProjectForm? formData, string? newImageFileName = null)
-    {
-        if (formData == null) return null!;
-        return new ProjectEntity
-        {
-            Id = formData.Id,
-            ImageFileName = newImageFileName ?? formData.ImageFileName,
-            ProjectName = formData.ProjectName,
-            ClientId = formData.ClientId,
-            Description = formData.Description,
-            StartDate = formData.StartDate,
-            EndDate = formData.EndDate,
-            Budget = formData.Budget,
-            UserId = formData.UserId,
-            StatusId = formData.StatusId
-        };
-    }
+
 
     public static Project ToModel(ProjectEntity? entity)
     {

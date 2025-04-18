@@ -26,5 +26,7 @@ namespace Authentication.Dtos
         public string? City { get; set; }
 
         public string? PhoneNumber { get; set; }
+
+        public bool IsAdmin { get; set; }
     }
 }

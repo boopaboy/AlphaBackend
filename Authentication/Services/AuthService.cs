@@ -37,6 +37,16 @@ namespace Authentication.Services
             var result = await RegisterAsync(model.Email, model.Password);
             if (result.Succeeded)
             {
+                if (model.IsAdmin)
+                {
+                await _userManager.AddToRoleAsync(await _userManager.FindByEmailAsync(model.Email), "admin");
+                }
+                else
+                { 
+                await _userManager.AddToRoleAsync(await _userManager.FindByEmailAsync(model.Email), "user");
+                
+                }
+                
                 var User = await _userManager.FindByEmailAsync(model.Email);
                 if (User != null)
                 {

@@ -50,6 +50,17 @@ builder.Services.AddSwaggerGen(c =>
     }
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("https://ashy-wave-00ce67603.6.azurestaticapps.net",
+                                "http://localhost:5173");
+            policy.WithHeaders("X-API-KEY");
+        });
+});
+
 builder.Services.AddAuthorization(x =>
 {
     x.AddPolicy("User", p => p.RequireClaim("user"));
@@ -78,11 +89,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-app.UseCors(x => x
-    .AllowAnyOrigin()
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    );
+app.UseCors();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
